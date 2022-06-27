@@ -3,39 +3,28 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the latest osquery installer .pkg from the osquery.io/downloads page</string>
+    <string>Downloads the latest osquery installer .pkg from GitHub.</string>
     <key>Identifier</key>
     <string>com.github.jbaker10.download.osquery</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
         <string>osquery</string>
-        <key>version</key>
-        <string>latest</string>
     </dict>
     <key>MinimumVersion</key>
-    <string>0.4.1</string>
+    <string>0.5.0</string>
     <key>Process</key>
     <array>
         <dict>
             <key>Processor</key>
-            <string>URLTextSearcher</string>
+            <string>GitHubReleasesInfoProvider</string>
             <key>Arguments</key>
             <dict>
-                <key>url</key>
-                <string>https://github.com/facebook/osquery/releases/latest</string>
-                <key>re_pattern</key>
-                <string>Release ([\d\.]+)</string>
-                <key>result_output_var_name</key>
-                <string>ver</string>
+                <key>github_repo</key>
+                <string>osquery/osquery</string>
             </dict>
         </dict>
         <dict>
-            <key>Arguments</key>
-            <dict>
-                <key>url</key>
-                <string>https://osquery-packages.s3.amazonaws.com/darwin/osquery-%ver%.pkg</string>
-            </dict>
             <key>Processor</key>
             <string>URLDownloader</string>
         </dict>
