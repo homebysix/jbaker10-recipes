@@ -2,53 +2,55 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>Description</key>
-    <string>Downloads the latest osquery installer .pkg from GitHub.</string>
-    <key>Identifier</key>
-    <string>com.github.jbaker10.download.osquery</string>
-    <key>Input</key>
-    <dict>
-        <key>NAME</key>
-        <string>osquery</string>
-        <key>REPO</key>
-        <string>osquery/osquery</string>
-    </dict>
-    <key>MinimumVersion</key>
-    <string>0.5.0</string>
-    <key>Process</key>
-    <array>
-        <dict>
-            <key>Processor</key>
-            <string>GitHubReleasesInfoProvider</string>
-            <key>Arguments</key>
-            <dict>
-                <key>github_repo</key>
-                <string>%REPO%</string>
-            </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>URLDownloader</string>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>EndOfCheckPhase</string>
-        </dict>
-        <dict>
-            <key>Arguments</key>
-            <dict>
-                <key>expected_authority_names</key>
-                <array>
-                    <string>Developer ID Installer: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)</string>
-                    <string>Developer ID Certification Authority</string>
-                    <string>Apple Root CA</string>
-                </array>
-                <key>input_path</key>
-                <string>%pathname%</string>
-            </dict>
-            <key>Processor</key>
-            <string>CodeSignatureVerifier</string>
-        </dict>
-    </array>
+	<key>Description</key>
+	<string>Downloads the latest osquery installer .pkg from GitHub.</string>
+	<key>Identifier</key>
+	<string>com.github.jbaker10.download.osquery</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>osquery</string>
+		<key>REPO</key>
+		<string>osquery/osquery</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.5.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>asset_regex</key>
+				<string>.*\.pkg</string>
+				<key>github_repo</key>
+				<string>%REPO%</string>
+			</dict>
+			<key>Processor</key>
+			<string>GitHubReleasesInfoProvider</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>expected_authority_names</key>
+				<array>
+					<string>Developer ID Installer: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)</string>
+					<string>Developer ID Certification Authority</string>
+					<string>Apple Root CA</string>
+				</array>
+				<key>input_path</key>
+				<string>%pathname%</string>
+			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+		</dict>
+	</array>
 </dict>
 </plist>
