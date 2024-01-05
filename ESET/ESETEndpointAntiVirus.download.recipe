@@ -11,7 +11,7 @@
         <key>NAME</key>
         <string>ESET Endpoint Anti-Virus</string>
         <key>DOWNLOAD_URL</key>
-        <string>https://download.eset.com/com/eset/apps/business/eea/mac/latest/eea_osx_en.dmg</string>
+        <string>https://download.eset.com/com/eset/apps/business/eea/mac/g2/latest/eea_osx.dmg</string>
     </dict>
     <key>MinimumVersion</key>
     <string>0.4.0</string>
