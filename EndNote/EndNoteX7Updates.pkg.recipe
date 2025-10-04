@@ -76,8 +76,6 @@
                     <!-- Would like to make the ID dynamic -->
                     <key>id</key>
                     <string>com.ThomsonResearchSoft.EndNote</string>
-                    <key>options</key>
-                    <string>purge_ds_store</string>
                     <key>scripts</key>
                     <string>endnote_scripts</string>
                     <key>chown</key>
